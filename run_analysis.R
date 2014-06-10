@@ -28,7 +28,10 @@ library(reshape2)
 
 # Melt it, dims: ()
 gigaTbl.melted <- melt(gigaTbl, id.vars = c("SubjectID", "Set", "Activity"))
-gigaTbl.casted <- dcast(gigaTbl.melted, SubjectID + Set + Activity ~ variable, mean)
+tidyData <- dcast(gigaTbl.melted, SubjectID + Set + Activity ~ variable, mean)
 
-# Write to "tidy.txt" and completes step 5
-write.table(gigaTbl.casted, file="tidy.txt")
+# remove temporary & raw data
+remove(gigaTbl, gigaTbl.melted)
+
+# Write to "tidyData.txt" and completes step 5
+write.table(tidyData, file="tidyData.txt")
