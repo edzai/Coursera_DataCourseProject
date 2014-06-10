@@ -23,7 +23,7 @@ load_table <- function(short, set, colnames = NULL) {
 load_feature <- function(basePath) {
     f <- read.table(paste0(basePath, "features.txt"))
     f <- sub("\\(\\)", "", f[,2])
-    sub("-", "_", f)
+    gsub("-", "_", f)
 }
 
 # Load all data (both test and train) into an data frame
