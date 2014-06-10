@@ -8,11 +8,11 @@ The *tidyData.txt* contains 180 observations (rows) of 82 variables (columns). E
 ## Identifier
 
 * SubjectID
-Unique ID for the subject
+    Unique ID for the subject
 * Set train|test
-Whether the row belongs to *train* or *test* group.
+	Whether the row belongs to *train* or *test* group.
 * Activity Walking|WalkingUpstairs|WalkingDownstairs|Sitting|Standing|Laying
-Assigned activity for this session
+	Assigned activity for this session
 
 ## Measurements
 

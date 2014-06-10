@@ -1,9 +1,9 @@
-# Program Assignment on *Getting and Cleaning Data*
+# README
 
 ## Synopsis
 
-As a course project to *Getting and Cleaning Data* on Coursera, this project will 
-download and extract raw data from [https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip] automatically, and complete the following steps as is instructed.
+As the course project to *Getting and Cleaning Data* on Coursera, this project will 
+download and extract raw data from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip automatically, and complete the following steps as is instructed.
 
 1. Merges the training and the test sets to create one data set.
 2. Extracts only the measurements on the mean and standard deviation for each measurement. 
