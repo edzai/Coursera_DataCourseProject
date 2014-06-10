@@ -5,15 +5,15 @@
 #
 
 # Helper to compose filenames like `basePath/[set]/[short]_[set].txt`
-fn <- function(short) {
+fn <- function(short, set) {
     paste0(basePath, set, "/", short, "_", set, ".txt")
 }
 
 # Helper to load file and set it's colnames
-load_table <- function(short, colnames = NULL) {
+load_table <- function(short, set, colnames = NULL) {
     if (is.null(colnames)) {colnames <- short}
 
-    tmp <- read.table(fn(short))
+    tmp <- read.table(fn(short, set))
     colnames(tmp) <- colnames
     tmp
 }
@@ -44,7 +44,7 @@ load_data <- function(basePath) {
 #
 load_set_data <- function(basePath, set) {
     # Load subject_set as primary ID to bootstrap the data.frame
-    gigaTbl <- read.table( fn("subject"), stringsAsFactors = T )
+    gigaTbl <- read.table( fn("subject", set), stringsAsFactors = T )
 
     # Append Set into it as factor
     gigaTbl <- cbind(gigaTbl, factor(set, levels = c("train", "test")))
@@ -54,7 +54,7 @@ load_set_data <- function(basePath, set) {
     # gigaTbl$SubjectID <- factor(gigaTbl$SubjectID)
 
     # Load Activities
-    gigaTbl <- cbind(gigaTbl, load_table("y", colnames = "Activity"))
+    gigaTbl <- cbind(gigaTbl, load_table("y", set, colnames = "Activity"))
 
     gigaTbl$Activity <- factor(gigaTbl$Activity, labels = c(
        "Walking",
@@ -66,7 +66,7 @@ load_set_data <- function(basePath, set) {
     ))
 
     features <- load_feature(basePath)
-    X <- load_table("X", colnames = features)
+    X <- load_table("X", set, colnames = features)
 
     # strip columns without mean or std; 
     # 
