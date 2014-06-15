@@ -21,7 +21,7 @@ The *tidyData.txt* contains 180 observations (rows) of 82 variables (columns). E
 
 ## Measurements
 
-These columns are mean and standard deviations from raw data (X.txt), with the braces stripped and hyphens (-) replaced with underscores (_). Check *UCI HAR Dataset/features_info.txt* for more information. Here's the list of the measurements:
+These columns are mean and standard deviations from raw data (X.txt), with parentheses stripped and hyphens (-) replaced with underscores (_). Check *UCI HAR Dataset/features_info.txt* for more information. Here's the list of the measurements:
 
 * tBodyAcc_mean_X
 * tBodyAcc_mean_Y
