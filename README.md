@@ -27,7 +27,15 @@ download and extract raw data from https://d396qusza40orc.cloudfront.net/getdata
 
 * CodeBook.md - the code book
 * README.md - this file
+* run_analysis.R - Primary script to process data
 * lib/ - libraries to be loaded via `source()`
-	* fetch.R - network and file checks
-	* main.R - data processing
-* data/ - placeholder to download and extract raw data
+	* fetch.R - download, verify, and extract raw data file from internet
+	* main.R - functions used by `run_analysis.R` to process the data
+* data/ - placeholder to downloaded and extracted data files
+
+
+## On Picking Variables
+
+I'd pick raw data (from accelerometer and gyroscope) as `measurements` if they were in the data set and well documented. However, data in "Inertial Signals" are ill-defined, and the formulation deriving tBodyAcc and tGravityAcc from body acceleration does not exist in the documents.
+
+So I relaxed my restriction to include derived data columns as `each measurement` stated in step 2. Most columns with *mean* or *std* falls into this category, including *meanFreq. Exceptions are those enclosed with `angle()`, for they are angle between vector means rather than means on angle measurements.

@@ -18,7 +18,7 @@ source("lib/fetch.R")
 # Loads data, download / extract if needed
 basePath <- download_data()
 
-# Load `the black magic` library
+# Load `the black magic` library containing 
 source("lib/main.R")
 
 # Load (raw) Data into memory, completes step 1-4 behind the scene
@@ -26,12 +26,13 @@ gigaTbl <- load_data(basePath)
 
 library(reshape2)
 
-# Melt it, dims: ()
+# Melt & Cast to create means on variables
 gigaTbl.melted <- melt(gigaTbl, id.vars = c("SubjectID", "Set", "Activity"))
-tidyData <- dcast(gigaTbl.melted, SubjectID + Set + Activity ~ variable, mean)
+tidyData <- dcast(gigaTbl.melted, SubjectID + Activity ~ variable, mean)
 
-# remove temporary & raw data
-remove(gigaTbl, gigaTbl.melted)
+# remove temporary & raw data to save memory. 
+# uncomment the next line if that's an issue
+# remove(gigaTbl, gigaTbl.melted)
 
-# Write to "tidyData.txt" and completes step 5
+# Write to "tidyData.txt" and complete step 5
 write.table(tidyData, file="tidyData.txt")
